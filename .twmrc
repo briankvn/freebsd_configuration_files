@@ -27,7 +27,7 @@ NoRaiseOnResize			# allow resizing under other windows
 NoTitleFocus			# avoid keystrokes in wrong window cause of lag
 DecorateTransients		# put titlebars on transients
 
-
+# Fonts
 
   MenuFont        "8x13"
   IconFont        "6x13"
@@ -43,7 +43,7 @@ WarpUnmapped			# allow warping to unmapped windows
 
 
 #NoTitle
-NoTitle			 # little programs that look like icons
+NoTitle			 # Don't put a title bar on these programs
 {
 	 "xclock"
 	 "xbiff"
@@ -61,7 +61,7 @@ NoTitle			 # little programs that look like icons
 #    TitleHighlight "solid4x4"		# make it stand out
 #}
 
-# Retro Beige theme
+# My Retro Beige theme colours
 
 Color
 {
@@ -107,7 +107,11 @@ Button1 = : iconmgr : f.iconify
 Button2 = : iconmgr : f.iconify
 
 ### Keybinds added by Sdorfehs
+
+# Beige theme dmenu, large font, bottom of screen
 "F1" = c : all : f.exec "dmenu_run -b -p 'FreeBSD' -fn 'Monospace::pixelsize=24' -nb 'Beige' -nf '#586c75' -sf '#fdf6e3' -sb '#444' &"
+
+# Take a screenshot with scrot, add date and optimise for png
 "F12" = c : all : f.exec "scrot '%d%m%Y_$wx$h.png' -e 'optipng $f' -d 4 &"
 
 #
@@ -126,7 +130,9 @@ menu "defops"
 #"Unfocus"	f.unfocus
 #"Show Iconmgr"	f.showiconmgr
 #"Hide Iconmgr"	f.hideiconmgr
-#
+
+
+# Basic menu with essential programs 
 " Firefox "	f.exec "exec firefox google.com &"
 " Surf Google "	f.exec "exec surf google.com &"
 " Xfe "	f.exec "exec xfe &"
