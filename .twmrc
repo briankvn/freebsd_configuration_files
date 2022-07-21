@@ -1,0 +1,147 @@
+#
+# Default twm configuration file; needs to be kept small to conserve string
+# space in systems whose compilers don't handle medium-sized strings.
+#
+# Sites should tailor this file, providing any extra title buttons, menus, etc.
+# that may be appropriate for their environment.  For example, if most of the
+# users were accustomed to uwm, the defaults could be set up not to decorate
+# any windows and to use meta-keys.
+#
+
+#OpaqueMove
+#NoDefaults
+LeftTitleButton "menu12" = f.menu "windowmenu"	# add a menu to each window
+TitleButtonBorderWidth 0	# don't want to see box around button
+ButtonIndent 0			# button doesn't have to be smaller
+
+UsePPosition "on"		# use program-specified size hints accepted
+NoHighlight			# do not flash borders on enter events
+OpaqueMove			# actually move window instead of outline
+#AutoRelativeResize		# don't require resize to cross border to start
+RestartPreviousState		# reiconify iconified things on startup
+ClientBorderWidth		# use the application border width on frame
+BorderWidth 2			# width of top level windows created by twm
+NoGrabServer			# don't grab server during menus, etc.
+NoRaiseOnMove			# allow moving under other windows
+NoRaiseOnResize			# allow resizing under other windows
+NoTitleFocus			# avoid keystrokes in wrong window cause of lag
+DecorateTransients		# put titlebars on transients
+
+
+
+  MenuFont        "8x13"
+  IconFont        "6x13"
+  TitleFont       "8x13"
+  ResizeFont      "fg-22"
+  BorderWidth     4
+
+NoSaveUnders			# faster to just repaint then save
+XORvalue 1			# tend to use visually distinct adjacent colors
+ConstrainedMoveTime 0		# turn off horizontal/vertical only moving
+NoCaseSensitive			# turn off case-sensitivity in sorting icons
+WarpUnmapped			# allow warping to unmapped windows
+
+
+#NoTitle
+NoTitle			 # little programs that look like icons
+{
+	 "xclock"
+	 "xbiff"
+	 "xeye"
+	 "xdclock"
+	 "xpclock"
+	 "xmore"
+	 "xload"
+	 "xterm"
+#	 "TWM Icon Manager"
+}
+
+#Pixmaps
+#{
+#    TitleHighlight "solid4x4"		# make it stand out
+#}
+
+# Retro Beige theme
+
+Color
+{
+BorderColor		"DarkSeaGreen"
+DefaultBackground	"DimGrey"
+TitleBackground		"Beige"
+TitleForeground		"DimGrey"
+MenuTitleBackground	"Beige"
+MenuTitleForeground	"DimGrey"
+MenuBackground		"Beige"
+MenuForeground		"DimGrey"
+MenuShadowColor		"Black"
+MenuBorderColor		"DarkSeaGreen"
+}
+
+#Background: xsetroot -solid "slategrey4"
+
+
+#
+# Define some useful functions for motion-based actions.
+#
+MoveDelta 3
+Function "move-or-lower" { f.move f.deltastop f.lower }
+Function "move-or-raise" { f.move f.deltastop f.raise }
+Function "move-or-iconify" { f.move f.deltastop f.iconify }
+
+#
+# Set some useful bindings.  Sort of uwm-ish, sort of simple-button-ish
+#
+Button1 = : root : f.menu "defops"
+
+Button1 = m : window|icon : f.function "move-or-lower"
+Button2 = m : window|icon : f.iconify
+Button3 = m : window|icon : f.function "move-or-raise"
+
+Button1 = : title : f.function "move-or-raise"
+Button2 = : title : f.raiselower
+
+Button1 = : icon : f.function "move-or-iconify"
+Button2 = : icon : f.iconify
+
+Button1 = : iconmgr : f.iconify
+Button2 = : iconmgr : f.iconify
+
+### Keybinds added by Sdorfehs
+"F1" = c : all : f.exec "dmenu_run -b -p 'FreeBSD' -fn 'Monospace::pixelsize=24' -nb 'Beige' -nf '#586c75' -sf '#fdf6e3' -sb '#444' &"
+"F12" = c : all : f.exec "scrot '%d%m%Y_$wx$h.png' -e 'optipng $f' -d 4 &"
+
+#
+# And a menus with the usual things
+#
+menu "defops"
+{
+"Beige Twm"	f.title
+#"Iconify"	f.iconify
+#"Resize"	f.resize
+#"Move"		f.move
+#"Raise"		f.raise
+#"Lower"		f.lower
+""		f.nop
+#"Focus"		f.focus
+#"Unfocus"	f.unfocus
+#"Show Iconmgr"	f.showiconmgr
+#"Hide Iconmgr"	f.hideiconmgr
+#
+" Firefox "	f.exec "exec firefox google.com &"
+" Surf Google "	f.exec "exec surf google.com &"
+" Xfe "	f.exec "exec xfe &"
+" xcalc "	f.exec "exec xcalc &"
+" Pinta "	f.exec "exec pinta &"
+""		f.nop
+" Sakura "		f.exec "exec sakura &"
+" Alacritty "		f.exec "exec alacritty &"
+" Xterm Beige "		f.exec "exec xterm -bg beige -fg dimgrey &"
+" Xterm Black "		f.exec "exec xterm -bg black -fg beige &"
+""		f.nop
+" Kill "		f.destroy
+" Delete "	f.delete
+""		f.nop
+" Restart "	f.restart
+" Exit "		f.quit
+}
+
