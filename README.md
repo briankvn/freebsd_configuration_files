@@ -1,9 +1,16 @@
 # configs
-My config and .dot files
+This contains my config and .dot files for FreeBSD.
 
 > Desktop
-- TWM Window manager  `.twmrc`
-- 
+
+- TWM Window manager  
+- `.twmrc`
+- `.Xresources`
+
+
+> Desktop programs
+- `.xfe`
+
 
 
 
