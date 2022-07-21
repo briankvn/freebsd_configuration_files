@@ -1,3 +1,6 @@
+# Set the font for xterm
+# Run: pkg install x11-fonts/plex-ttf (To get them)
+
 xterm*faceName: IBM Plex Mono
 xterm*faceSize: 11
 xterm*renderFont: true
