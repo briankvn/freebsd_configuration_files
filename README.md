@@ -9,7 +9,7 @@ A collection of my config and .dot files for FreeBSD desktop. NOT COMPLETE
   - `.Xresources`
 
 
-- Desktop -- programs
+- Desktop -- Programs
 
   - `.xfe`
 
